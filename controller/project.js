@@ -1,6 +1,6 @@
 const Project = require('../models/project');
 const Issue = require('../models/issue');
-const { findById } = require('../models/project');
+// const { findById } = require('../models/project');
 
 // create a project 
 module.exports.createProject = async function (req, res) {
@@ -25,8 +25,9 @@ module.exports.findProject = async function (req, res) {
         });
         if (project) {
             return res.render('project', {
-                Title: 'Project Page',
+                Title: 'Issue Tracker || Project Page',
                 project,
+                Contributer: 'Arunava Saha'
             });
         }
         return res.redirect('back');

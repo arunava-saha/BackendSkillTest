@@ -1,5 +1,5 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
+
 require('dotenv').config();
 const app = express();
 const connectdb = require('./config/mongoose');
@@ -13,12 +13,11 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 app.use(express.urlencoded({ extended: false }));
 
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'assets')));
 
 
 app.use(layouts);
-
+// extract style and scripts from sub pages into the layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 // app.set('Content-Type', 'text/css');
