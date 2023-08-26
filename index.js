@@ -3,7 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const app = express();
 const connectdb = require('./config/mongoose');
-const port = process.env.port || 8000;
+const port = process.env.PORT || 8000;
 const path = require('path');
 
 connectdb();
