@@ -16,8 +16,7 @@ searchIssueForm.addEventListener('submit', function (e) {
   //get all the form data
 
   let titleValue = searchIssueForm.querySelector('input[name="tie"]').value;
-  let descriptionValue =
-    searchIssueForm.querySelector('input[name="des"]').value;
+  let descriptionValue = searchIssueForm.querySelector('input[name="des"]').value;
 
   //add issue to searched issues array
   searchIssues.map((el) => {

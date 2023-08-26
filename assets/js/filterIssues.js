@@ -17,9 +17,7 @@ filterIssueForm.addEventListener('submit', function (e) {
   let labelsList = filterIssueForm.querySelectorAll('input[type=checkbox]');
   let labelsElements = [...labelsList].filter((Element) => Element.checked);
 
-  let authorVal = filterIssueForm.querySelector(
-    'input[type=radio][name=Author]:checked'
-  ).value;
+  let authorVal = filterIssueForm.querySelector('input[type=radio][name=Author]checked').value;
 
   let [...labelsArr] = labelsElements.map((Element) => Element.value);
 

@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { createProject, findProject, createIssue } = require('../controller/project');
+const { findProject, createIssue, createProject } = require('../controller/project');
 
-router.post('/createProject', createProject);
-router.route('/:id').get(findProject).post(createIssue);
+router.post('/create', createProject);
+router.get('/:id', findProject);
+router.post('/:id', createIssue);
 
 module.exports = router;

@@ -58,7 +58,7 @@ module.exports.createIssue = async function (req, res) {
                     }
                 }
             } else {
-                let isPresent = project.labels.find((obj) => obj == req.body.Labels);
+                let isPresent = project.Labels.find((obj) => obj == req.body.Labels);
                 if (!isPresent) {
                     project.Labels.push(req.body.Labels);
                 }
