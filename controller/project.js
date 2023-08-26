@@ -6,7 +6,7 @@ const Issue = require('../models/issue');
 module.exports.createProject = async function (req, res) {
     try {
         Project.create({
-            ProjectName: req.body.Name,
+            ProjectName: req.body.ProjectName,
             Description: req.body.Description,
             Author: req.body.Author,
         });
@@ -21,7 +21,7 @@ module.exports.createProject = async function (req, res) {
 module.exports.findProject = async function (req, res) {
     try {
         let project = await Project.findById(req.params.id).populate({
-            path: 'issues',
+            path: 'Issues'
         });
         if (project) {
             return res.render('project', {

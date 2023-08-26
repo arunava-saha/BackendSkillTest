@@ -71,7 +71,7 @@
                                 <label for="labels" class="col-sm-4 col-form-label">Search by Label</label>
 
                                 <div class="col-sm-8">
-                                    <% for( let label of project.labels) { %>
+                                    <% for( let label of project.Labels) { %>
                                         <input class="form-check-input" name="labels" type="checkbox"
                                             value="<%= label %>" id="<%=label%>" />
                                         <label class="form-check-label" for="<%=label%>">
@@ -86,11 +86,11 @@
                                     <input class="form-check-input" name="author" type="radio" checked="checked"
                                         value="" id="null" />
                                     <label class="form-check-label" for="null">None</label><br />
-                                    <% for( let issue of project.issues ) { %>
+                                    <% for( let issue of project.Issues ) { %>
                                         <input class="form-check-input" name="author" type="radio"
                                             value="<%= issue.author %>" id="<%= issue.author %>" />
                                         <label class="form-check-label" for="<%= issue.author %>">
-                                            <%= issue.author %>
+                                            <%= issue.Author %>
                                         </label><br />
                                         <% } %>
                                 </div>

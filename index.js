@@ -11,7 +11,7 @@ const layouts = require('express-ejs-layouts');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, 'assets')));
 
@@ -20,9 +20,9 @@ app.use(layouts);
 // extract style and scripts from sub pages into the layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
-// app.set('Content-Type', 'text/css');
+;
 
-// app.use("/", require('./routes'))
+app.use("/", require('./routes/home'))
 
 
 app.listen(port, function (err) {
