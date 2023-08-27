@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-sm bg-light">
     <div class="container-fluid">
         <a class="navbar-brand ms-4" href="/" style="font-weight:bolder"> IssueTracker </a>
-        <% if( Title==="Issue Tracker || Project Page" ){ %>
+        <% if( title==="Project Page" ){ %>
             <%- include('_createIssue'); %>
                 <% }else{ %>
                     <%- include('_createProject'); %>

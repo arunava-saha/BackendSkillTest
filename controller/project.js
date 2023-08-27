@@ -1,14 +1,14 @@
 const Project = require('../models/project');
 const Issue = require('../models/issue');
-// const { findById } = require('../models/project');
+const { findById } = require('../models/project');
 
-// create a project 
-module.exports.createProject = async function (req, res) {
+// create a project for the user
+module.exports.create = async function (req, res) {
     try {
         Project.create({
-            ProjectName: req.body.ProjectName,
-            Description: req.body.Description,
-            Author: req.body.Author,
+            name: req.body.name,
+            description: req.body.description,
+            author: req.body.author,
         });
         return res.redirect('back');
     } catch (err) {
@@ -17,15 +17,15 @@ module.exports.createProject = async function (req, res) {
     }
 };
 
-// find a project by ID and display it in the project page
-module.exports.findProject = async function (req, res) {
+// find project and display it in the project page
+module.exports.project = async function (req, res) {
     try {
         let project = await Project.findById(req.params.id).populate({
-            path: 'Issues'
+            path: 'issues',
         });
         if (project) {
             return res.render('project', {
-                Title: 'Issue Tracker || Project Page',
+                title: 'Project Page',
                 project,
                 Contributer: 'Arunava Saha'
             });
@@ -37,30 +37,30 @@ module.exports.findProject = async function (req, res) {
     }
 };
 
-// create issue of the project
+// create issue
 module.exports.createIssue = async function (req, res) {
     try {
         let project = await Project.findById(req.params.id);
         if (project) {
             let issue = await Issue.create({
-                Type: req.body.issue,
-                Description: req.body.Description,
-                Labels: req.body.Labels,
-                Author: req.body.Author,
+                title: req.body.title,
+                description: req.body.description,
+                labels: req.body.labels,
+                author: req.body.author,
             });
-            project.Issues.push(issue);
+            project.issues.push(issue);
 
-            if (!(typeof req.body.Labels === 'string')) {
-                for (let label of req.body.Labels) {
-                    let isPresent = project.Labels.find((obj) => obj == label);
+            if (!(typeof req.body.labels === 'string')) {
+                for (let label of req.body.labels) {
+                    let isPresent = project.labels.find((obj) => obj == label);
                     if (!isPresent) {
-                        project.Labels.push(label);
+                        project.labels.push(label);
                     }
                 }
             } else {
-                let isPresent = project.Labels.find((obj) => obj == req.body.Labels);
+                let isPresent = project.labels.find((obj) => obj == req.body.labels);
                 if (!isPresent) {
-                    project.Labels.push(req.body.Labels);
+                    project.labels.push(req.body.labels);
                 }
             }
             await project.save();

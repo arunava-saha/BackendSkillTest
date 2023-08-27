@@ -3,11 +3,11 @@ module.exports.home = async function (req, res) {
     try {
         let projects = await Project.find({}).sort('-createdAt');
         return res.render('home', {
-            Title: 'Issue Tracker || Home Page',
+            title: 'Issue Tracker || Home Page',
             projects,
             Contributer: 'Arunava Saha'
         });
-    } catch {
+    } catch (err) {
         console.log('Error', err);
         return;
     }

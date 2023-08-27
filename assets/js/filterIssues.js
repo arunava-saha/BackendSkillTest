@@ -17,13 +17,15 @@ filterIssueForm.addEventListener('submit', function (e) {
   let labelsList = filterIssueForm.querySelectorAll('input[type=checkbox]');
   let labelsElements = [...labelsList].filter((Element) => Element.checked);
 
-  let authorVal = filterIssueForm.querySelector('input[type=radio][name=Author]checked').value;
+  let authorVal = filterIssueForm.querySelector(
+    'input[type=radio][name=author]:checked'
+  ).value;
 
   let [...labelsArr] = labelsElements.map((Element) => Element.value);
 
   //add issue to filtered issues array
   issues.map((el) => {
-    if (el.Author == authorVal) {
+    if (el.author == authorVal) {
       if (!filteredIssues.includes(el)) {
         filteredIssues.push(el);
       }
@@ -44,10 +46,10 @@ filterIssueForm.addEventListener('submit', function (e) {
     Div.innerHTML = `
       <div class="card w-100" >
     <div class="card-body" >
-      <h4 class="card-title">Title : ${issue.Type} </h4>
-      <h5 class="card-title">Author : ${issue.Author}</h5>
+      <h4 class="card-title">Title : ${issue.title} </h4>
+      <h5 class="card-title">Author : ${issue.author}</h5>
       <h6 class="card-subtitle mb-2 text-muted">
-        Description : ${issue.Description}
+        Description : ${issue.description}
       </h6>
     </div>
   </div>
